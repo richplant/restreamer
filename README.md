@@ -1,6 +1,6 @@
 # RTMP Restreamer
 
-A simple solution that should allow a website operator to ingest an IP-locked live stream (using an appropriate security token), then output a non-locked stream that can be embedded on a web page. Currently compatible with Ubuntu server 14.04.
+A simple solution that should allow a website operator to ingest an IP-locked live stream (using an appropriate security token), then output a non-locked stream that can be embedded on a web page. Currently compatible with Ubuntu server (use the restreamer-ubuntu-14.04.sh setup script for that version).
 
 ## Install and configure the server
 
@@ -8,9 +8,9 @@ In order to start restreaming live video from your own server, you'll have to se
 
 ### Use setup script (OPTION 1)
 
-Run the following command:
+Download the appropriate sh file for the OS version you're running, then run the following command:
 
-sudo sh restreamer.sh
+$ sudo sh restreamer-*.sh
 
 ### Manual install (OPTION 2)
 
@@ -55,7 +55,7 @@ FFmpeg: Pipes stream data out in an FLV container to server.
 
 1. Install ffmpeg
 
-On Ubuntu:
+This is done by the install script, if you used it, but if you set it up manually:
 
 $ sudo apt-get install ffmpeg
 
