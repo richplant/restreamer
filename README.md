@@ -18,14 +18,14 @@ The server part of the setup is Nginx. This will serve our RTMP streams on port 
 
 1. Build Nginx along with RTMP module:
 
-$ wget http://nginx.org/download/nginx-1.8.0.tar.gz
-$ wget https://github.com/arut/nginx-rtmp-module/archive/master.zip
-$ tar -zxvf nginx-1.8.0.tar.gz
-$ unzip master.zip
-$ cd nginx-1.8.0
-$ ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-master
-$ make
-$ sudo make install
+$wget http://nginx.org/download/nginx-1.8.0.tar.gz  
+$wget https://github.com/arut/nginx-rtmp-module/archive/master.zip  
+$ tar -zxvf nginx-1.8.0.tar.gz  
+$ unzip master.zip  
+$ cd nginx-1.8.0  
+$ ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-master  
+$ make  
+$ sudo make install  
 
 2. Add following to /usr/local/nginx/conf/nginx.conf:
  
