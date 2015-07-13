@@ -73,5 +73,3 @@ STREAM_NUMBER is an identifier of your choice you can use to identify the final 
 You can now take your restreamed RMTP stream from 'rtmp://MY_SERVER_IP/live/STREAM_NUMBER' and drop it into jwplayer or similar in order to view/embed the stream.
 
 Replace MY_SERVER_IP with the public IP address of the server which is running Nginx, and STREAM_NUMBER with the number defined in the previous step.
-
-You can test if the stream is functioning by plugging the output URL into our video plugin, like this: https://ruptly.tv/jwplayer/?autostart=1&streamurl=rtmp://MY_SERVER_IP/live/STREAM_NUMBER
