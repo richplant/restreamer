@@ -10,40 +10,41 @@ In order to start restreaming live video from your own server, you'll have to se
 
 Download the appropriate sh file for the OS version you're running, then run the following command:
 
-$ sudo sh restreamer-*.sh
+    $ sudo sh restreamer-*.sh
 
 ### Manual install (OPTION 2)
 
 The server part of the setup is Nginx. This will serve our RTMP streams on port 1935, through an application called 'live'.
 
-1. Build Nginx along with RTMP module:
+1: Build Nginx along with RTMP module:
 
-$wget http://nginx.org/download/nginx-1.8.0.tar.gz  
-$wget https://github.com/arut/nginx-rtmp-module/archive/master.zip  
-$ tar -zxvf nginx-1.8.0.tar.gz  
-$ unzip master.zip  
-$ cd nginx-1.8.0  
-$ ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-master  
-$ make  
-$ sudo make install  
+    $ wget http://nginx.org/download/nginx-1.8.0.tar.gz  
+    $ wget https://github.com/arut/nginx-rtmp-module/archive/master.zip  
+    $ tar -zxvf nginx-1.8.0.tar.gz  
+    $ unzip master.zip  
+    $ cd nginx-1.8.0  
+    $ ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-master  
+    $ make  
+    $ sudo make install  
 
-2. Add following to /usr/local/nginx/conf/nginx.conf:
- 
+2: Add following to /usr/local/nginx/conf/nginx.conf:
+<pre><code> 
 rtmp {
         server {
                 listen 1935;
                 chunk_size 4096;
-
+                
                 application live {
                         live on;
                         record off;
                 }
         }
 }
+</pre></code>
 
-3. Start server:
+3: Start server:
 
-$ sudo /usr/local/nginx/sbin/nginx
+    $ sudo /usr/local/nginx/sbin/nginx
 
 ## Ingest and output live stream
 
@@ -53,15 +54,15 @@ RTMPdump: Grabs stream data from RTMP url. We're using RTMPdump since it deals v
 
 FFmpeg: Pipes stream data out in an FLV container to server.
 
-1. Install ffmpeg
+1: Install ffmpeg
 
 This is done by the install script, if you used it, but if you set it up manually:
 
-$ sudo apt-get install ffmpeg
+    $ sudo apt-get install ffmpeg
 
-2. Run following command for each required stream:
+2: Run following command for each required stream:
 
-$ rtmpdump -v -r "rtmp://LINK_WITH_TOKEN" | ffmpeg -re -i - -c copy -f flv rtmp://localhost/live/STREAM_NUMBER
+    $ rtmpdump -v -r "rtmp://LINK_WITH_TOKEN" | ffmpeg -re -i - -c copy -f flv rtmp://localhost/live/STREAM_NUMBER
 
 LINK_WITH_TOKEN is the rtmp part of the live link you were given, along with the authentication token. It should look something like rtmp://xxxxxx.net/.../stream?6_A_sBUeIdeGER4...
 
